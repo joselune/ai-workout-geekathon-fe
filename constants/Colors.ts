@@ -24,6 +24,8 @@ const colors = {
     badgeText: '#fff',
     detailText: '#495057',
     muscleGroupText: '#6c757d',
+    dayCircleBackground: '#007bff',
+    dayText: '#fff',
   },
   dark: {
     text: '#fff',
@@ -47,6 +49,8 @@ const colors = {
     badgeText: '#fff',
     detailText: '#adb5bd',
     muscleGroupText: '#ced4da',
+    dayCircleBackground: '#007bff',
+    dayText: '#000',
   },
 };
 

@@ -5,6 +5,7 @@ import {
   TextInput,
   View,
   ScrollView,
+  TouchableOpacity,
 } from "react-native";
 import { Text } from "@/components/Themed";
 import OptionSelector from "@/components/OptionSelector";
@@ -13,6 +14,7 @@ import StyledButton from "@/components/StyledButton";
 import { WorkoutData } from "@/types/Workouts";
 import TextArea from "../../components/TextArea";
 import Colors from "@/constants/Colors";
+import { FontAwesome } from "@expo/vector-icons";
 
 type RootStackParamList = {
   two: { workoutData: WorkoutData };
@@ -45,7 +47,13 @@ export default function TabOneScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <View style={headerStyles.header}>
+        <Text style={headerStyles.headerSubtitle}>Plan your current week</Text>
+        <Text style={headerStyles.headerTitle}>Workout</Text>
+      </View>
+      <ScrollView
+        contentContainerStyle={{ paddingHorizontal: 20, paddingVertical: 20 }}
+      >
         <View>
           <Text style={styles.inputLabel}>Age</Text>
           <TextInput
@@ -139,7 +147,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    padding: 16,
     backgroundColor: Colors.light.background,
   },
   input: {
@@ -161,5 +168,27 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 4,
     color: "#333",
+  },
+});
+
+const headerStyles = StyleSheet.create({
+  header: {
+    backgroundColor: "#fff",
+    paddingVertical: 20,
+    paddingHorizontal: 16,
+    alignItems: "flex-start",
+    justifyContent: "center",
+    marginTop: 20,
+  },
+  headerTitle: {
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  headerSubtitle: {
+    fontSize: 16,
+    color: "#888",
+    textAlign: "center",
+    marginBottom: 8,
   },
 });

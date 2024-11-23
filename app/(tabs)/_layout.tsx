@@ -23,9 +23,8 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
+        headerShown: false,
+        headerStyle: { backgroundColor: "#fff" },
       }}
     >
       <Tabs.Screen
@@ -34,30 +33,7 @@ export default function TabLayout() {
           title: "Workout",
         }}
       />
-      <Tabs.Screen
-        name="two"
-        options={{
-          title: "Workout result",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerLeft: () => {
-            const navigation = useNavigation();
-            return (
-              navigation.canGoBack() && (
-                <TouchableOpacity
-                  onPress={() => navigation.goBack()}
-                  style={{ paddingLeft: 20, paddingRight: 20 }}
-                >
-                  <FontAwesome
-                    name="chevron-left"
-                    size={24}
-                    color={Colors[colorScheme ?? "light"].tint}
-                  />
-                </TouchableOpacity>
-              )
-            );
-          },
-        }}
-      />
+      <Tabs.Screen name="two" />
     </Tabs>
   );
 }

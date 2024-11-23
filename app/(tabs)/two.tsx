@@ -1,7 +1,13 @@
 import React from "react";
-import { StyleSheet, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  SafeAreaView,
+} from "react-native";
 import { Text, View } from "@/components/Themed";
-import { RouteProp, useRoute } from "@react-navigation/native";
+import { RouteProp, useRoute, useNavigation } from "@react-navigation/native";
+import { FontAwesome } from "@expo/vector-icons";
 import {
   Exercise,
   WorkoutData,
@@ -49,6 +55,7 @@ const MetadataWorkout: React.FC<MetadataWorkoutProps> = ({ workoutData }) => {
 
 export default function TabTwoScreen() {
   const route = useRoute<TabTwoScreenRouteProp>();
+  const navigation = useNavigation();
   const { workoutData } = route.params;
   const mock: Exercise = {
     difficulty: "Hard",
@@ -63,16 +70,65 @@ export default function TabTwoScreen() {
   };
 
   return (
-    <View>
-      {/* <MetadataWorkout workoutData={workoutData} /> */}
+    <SafeAreaView>
+      <View style={styles.header}>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={styles.backButton}
+        >
+          <FontAwesome
+            name="chevron-left"
+            size={20}
+            color={Colors.light.activeButtonBorder}
+          />
+        </TouchableOpacity>
+        <View style={styles.headerTextContainer}>
+          <Text style={styles.headerSubtitle}>Your Training Plan</Text>
+          <Text style={styles.headerTitle}>Workouts</Text>
+        </View>
+      </View>
       <ScrollView>
         <WorkoutPlan workoutPlan={mockWorkoutPlan} />
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.light.borderColor,
+    backgroundColor: Colors.light.background,
+    shadowColor: Colors.light.shadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 5,
+    paddingTop: 60,
+  },
+  backButton: {
+    paddingLeft: 0,
+    paddingRight: 20,
+  },
+  headerTextContainer: {
+    flex: 1,
+    alignItems: "flex-start",
+  },
+  headerTitle: {
+    fontSize: 28,
+    fontWeight: "bold",
+    color: Colors.light.text,
+    textAlign: "center",
+  },
+  headerSubtitle: {
+    fontSize: 12,
+    color: Colors.light.detailText,
+    textAlign: "center",
+    marginBottom: 4,
+  },
   title: {
     fontSize: 20,
     fontWeight: "bold",

@@ -34,15 +34,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "flex-start",
     marginVertical: 20,
-    paddingLeft: 5,
+    paddingHorizontal: 15,
   },
   dayContainer: {
     alignItems: "center",
-    marginRight: 20,
+    marginRight: 15,
   },
   dayCircle: {
-    backgroundColor: Colors.light.tint,
-    borderRadius: 50,
+    backgroundColor: Colors.light.activeButtonBackground,
+    borderRadius: 20,
     width: 40,
     height: 40,
     justifyContent: "center",
@@ -50,14 +50,14 @@ const styles = StyleSheet.create({
   },
   dayText: {
     fontSize: 18,
-    fontWeight: "bold",
-    color: "white",
+    fontWeight: "600",
+    color: Colors.light.activeButtonText,
   },
   verticalLine: {
     width: 2,
-    backgroundColor: "lightgray",
+    backgroundColor: Colors.light.borderColor,
     flex: 1,
-    marginTop: 4,
+    marginTop: 8,
   },
   cardsContainer: {
     flex: 1,
