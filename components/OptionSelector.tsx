@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { Text } from "@/components/Themed";
+import Colors from "@/constants/Colors";
 
 type OptionItemProps = {
   label: string;
@@ -79,22 +80,22 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     padding: 10,
-    borderColor: "#ccc",
+    borderColor: Colors.light.borderColor,
     borderWidth: 1,
     marginHorizontal: 5,
     borderRadius: 8,
-    backgroundColor: "#fff",
+    backgroundColor: Colors.light.buttonBackground,
   },
   activeButton: {
-    backgroundColor: "#007bff",
-    borderColor: "#007bff",
+    backgroundColor: Colors.light.activeButtonBackground,
+    borderColor: Colors.light.activeButtonBorder,
   },
   buttonText: {
-    color: "#000",
+    color: Colors.light.buttonText,
     fontWeight: "bold",
   },
   activeButtonText: {
-    color: "#fff",
+    color: Colors.light.activeButtonText,
   },
 });
 

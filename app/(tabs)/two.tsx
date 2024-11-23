@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import { Text, View } from "@/components/Themed";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { WorkoutData } from "@/types/Workouts";
-import { FontAwesome } from "@expo/vector-icons";
+import Colors from "@/constants/Colors";
 
 type TabTwoScreenRouteProp = RouteProp<
   { params: { workoutData: WorkoutData } },
@@ -52,9 +52,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 20,
+    color: Colors.light.text,
   },
   text: {
     fontSize: 16,
     marginBottom: 10,
+    color: Colors.light.text,
   },
 });

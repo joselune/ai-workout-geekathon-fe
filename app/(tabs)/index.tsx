@@ -11,7 +11,8 @@ import OptionSelector from "@/components/OptionSelector";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import StyledButton from "@/components/StyledButton";
 import { WorkoutData } from "@/types/Workouts";
-import TextArea from "../components/TextArea";
+import TextArea from "../../components/TextArea";
+import Colors from "@/constants/Colors";
 
 type RootStackParamList = {
   two: { workoutData: WorkoutData };
@@ -139,10 +140,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     padding: 16,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: Colors.light.background,
   },
   input: {
-    height: 40,
     borderColor: "#ccc",
     borderWidth: 1,
     marginBottom: 12,
@@ -150,57 +150,16 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: "#fff",
   },
-  buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 12,
-  },
-  button: {
-    flex: 1,
-    alignItems: "center",
-    padding: 10,
-    borderColor: "#ccc",
-    borderWidth: 1,
-    marginHorizontal: 5,
-    borderRadius: 8,
-    backgroundColor: "#fff",
-  },
-  activeButton: {
-    backgroundColor: "#007bff",
-    borderColor: "#007bff",
-  },
   label: {
     fontSize: 16,
     fontWeight: "bold",
     marginBottom: 12,
     color: "#333",
   },
-  styledButton: {
-    alignItems: "center",
-    padding: 10,
-    borderColor: "#007bff",
-    borderWidth: 1,
-    borderRadius: 8,
-    backgroundColor: "#007bff",
-  },
-  buttonText: {
-    color: "#000",
-    fontWeight: "bold",
-  },
-  activeButtonText: {
-    color: "#fff",
-  },
-  styledButtonText: {
-    color: "#fff",
-    fontWeight: "bold",
-  },
   inputLabel: {
     fontSize: 14,
     fontWeight: "bold",
     marginBottom: 4,
     color: "#333",
-  },
-  workoutButton: {
-    marginTop: 20,
   },
 });

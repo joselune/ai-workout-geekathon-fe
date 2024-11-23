@@ -1,5 +1,6 @@
 import React from "react";
 import { TextInput, StyleSheet, View, Text } from "react-native";
+import Colors from "@/constants/Colors";
 
 type TextAreaProps = {
   value: string;
@@ -29,12 +30,12 @@ const TextArea: React.FC<TextAreaProps> = ({
 const styles = StyleSheet.create({
   textArea: {
     height: 100,
-    borderColor: "#ccc",
+    borderColor: Colors.light.borderColor,
     borderWidth: 1,
     marginBottom: 12,
     paddingHorizontal: 8,
     borderRadius: 8,
-    backgroundColor: "#fff",
+    backgroundColor: Colors.light.inputBackground,
     textAlignVertical: "top",
   },
 });

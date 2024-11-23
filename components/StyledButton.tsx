@@ -1,5 +1,6 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import Colors from "@/constants/Colors";
 
 type StyledButtonProps = {
   title: string;
@@ -17,7 +18,7 @@ const StyledButton: React.FC<StyledButtonProps> = ({ title, onPress }) => (
 
 const styles = StyleSheet.create({
   styledButton: {
-    backgroundColor: "#007BFF",
+    backgroundColor: Colors.light.activeButtonBackground,
     padding: 10,
     borderRadius: 5,
     alignItems: "center",
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   styledButtonText: {
-    color: "#FFFFFF",
+    color: Colors.light.activeButtonText,
     fontSize: 16,
   },
 });
