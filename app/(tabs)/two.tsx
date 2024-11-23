@@ -87,6 +87,7 @@ export default function TabTwoScreen() {
           <Text style={styles.headerTitle}>Workouts</Text>
         </View>
       </View>
+      {/* <MetadataWorkout workoutData={workoutData} /> */}
       <ScrollView>
         <WorkoutPlan workoutPlan={mockWorkoutPlan} />
       </ScrollView>
