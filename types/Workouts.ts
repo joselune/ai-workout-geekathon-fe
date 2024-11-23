@@ -8,3 +8,16 @@ export type WorkoutData = {
     availableWorkoutTime: string;
     injuries?: string;
 };
+
+export type Exercise = {
+    name: string;
+    sets: number;
+    reps: number;
+    muscle_group: string[];
+    difficulty: string;
+};
+
+export type WorkoutPlan = {
+    day: number;
+    exercises: Exercise[];
+};
