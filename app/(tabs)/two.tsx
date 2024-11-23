@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   ScrollView,
@@ -56,6 +56,7 @@ const MetadataWorkout: React.FC<MetadataWorkoutProps> = ({ workoutData }) => {
 export default function TabTwoScreen() {
   const route = useRoute<TabTwoScreenRouteProp>();
   const navigation = useNavigation();
+  const [loading, setLoading] = useState(false);
   const { workoutData } = route.params;
   const mock: Exercise = {
     difficulty: "Hard",
@@ -68,6 +69,14 @@ export default function TabTwoScreen() {
     day: 1,
     exercises: [mock],
   };
+
+  if (loading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <Text style={styles.loadingText}>Loading...</Text>
+      </View>
+    );
+  }
 
   return (
     <SafeAreaView>
@@ -139,6 +148,15 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     marginBottom: 10,
+    color: Colors.light.text,
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  loadingText: {
+    fontSize: 18,
     color: Colors.light.text,
   },
 });
