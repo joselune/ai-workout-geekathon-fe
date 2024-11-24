@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   ScrollView,
@@ -15,6 +15,7 @@ import {
 } from "@/types/Workouts";
 import Colors from "@/constants/Colors";
 import WorkoutPlan from "@/components/WorkoutPlan";
+import { generateExercises } from "@/api/api";
 
 type TabTwoScreenRouteProp = RouteProp<
   { params: { workoutData: WorkoutData } },
@@ -57,7 +58,29 @@ export default function TabTwoScreen() {
   const route = useRoute<TabTwoScreenRouteProp>();
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
+  const [workouts, setWorkOuts] = useState<WorkoutPlanType[]>();
+  const [hasError, setError] = useState(false);
   const { workoutData } = route.params;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setError(false);
+        setLoading(true);
+        const response = await generateExercises(workoutData);
+        console.log(response);
+        setWorkOuts(response);
+      } catch (err) {
+        console.log(err);
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [workoutData]);
+
   const mock: Exercise = {
     difficulty: "Hard",
     muscle_group: ["upper", "core"],
@@ -67,13 +90,21 @@ export default function TabTwoScreen() {
   };
   const mockWorkoutPlan: WorkoutPlanType = {
     day: 1,
-    exercises: [mock],
+    exercises: [mock, mock, mock, mock],
   };
 
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
         <Text style={styles.loadingText}>Loading...</Text>
+      </View>
+    );
+  }
+
+  if (hasError) {
+    return (
+      <View style={styles.loadingContainer}>
+        <Text style={styles.loadingText}>There was an error: {}</Text>
       </View>
     );
   }
@@ -97,8 +128,12 @@ export default function TabTwoScreen() {
         </View>
       </View>
       {/* <MetadataWorkout workoutData={workoutData} /> */}
-      <ScrollView>
-        <WorkoutPlan workoutPlan={mockWorkoutPlan} />
+      <ScrollView
+        contentContainerStyle={{ overflow: "scroll", paddingBottom: 150 }}
+      >
+        {workouts?.map((workout, index) => (
+          <WorkoutPlan key={index} workoutPlan={workout} />
+        ))}
       </ScrollView>
     </SafeAreaView>
   );
@@ -126,6 +161,7 @@ const styles = StyleSheet.create({
   headerTextContainer: {
     flex: 1,
     alignItems: "flex-start",
+    backgroundColor: "white",
   },
   headerTitle: {
     fontSize: 28,

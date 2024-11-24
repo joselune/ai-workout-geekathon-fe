@@ -14,7 +14,6 @@ import StyledButton from "@/components/StyledButton";
 import { WorkoutData } from "@/types/Workouts";
 import TextArea from "../../components/TextArea";
 import Colors from "@/constants/Colors";
-import { FontAwesome } from "@expo/vector-icons";
 
 type RootStackParamList = {
   two: { workoutData: WorkoutData };
@@ -70,6 +69,17 @@ export default function TabOneScreen() {
             placeholder="Weight"
             value={weight}
             onChangeText={setWeight}
+          />
+
+          <Text style={styles.label}>Experience level</Text>
+          <OptionSelector
+            options={[
+              { label: "Beginner", value: "Beginner" },
+              { label: "Intermediate", value: "Intermediate" },
+              { label: "Advanced", value: "Advanced" },
+            ]}
+            selectedValue={experienceLevel}
+            onSelect={(value) => setExperienceLevel(value as string)}
           />
 
           <Text style={styles.label}>Experience level</Text>
@@ -184,6 +194,7 @@ const headerStyles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     textAlign: "center",
+    color: "black",
   },
   headerSubtitle: {
     fontSize: 16,

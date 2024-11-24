@@ -5,10 +5,13 @@ import ExerciseCard from "@/components/Exercise";
 import Colors from "@/constants/Colors";
 
 type WorkoutPlanProps = {
-  workoutPlan: WorkoutPlanType;
+  workoutPlan?: WorkoutPlanType;
 };
 
 const WorkoutPlan: React.FC<WorkoutPlanProps> = ({ workoutPlan }) => {
+  if (!workoutPlan) {
+    return <></>;
+  }
   return (
     <View style={styles.container}>
       <View style={styles.dayContainer}>
@@ -21,7 +24,7 @@ const WorkoutPlan: React.FC<WorkoutPlanProps> = ({ workoutPlan }) => {
         <View style={styles.verticalLine} />
       </View>
       <View style={styles.cardsContainer}>
-        {workoutPlan.exercises.map((exercise, index) => (
+        {workoutPlan.exercises?.map((exercise, index) => (
           <ExerciseCard key={index} {...exercise} />
         ))}
       </View>
