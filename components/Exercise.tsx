@@ -4,9 +4,9 @@ import Colors from "@/constants/Colors";
 
 export default function ExerciseCard(exercise: Exercise) {
   const difficultyColors: { [key: string]: string } = {
-    Easy: Colors.light.success,
-    Medium: Colors.light.warning,
-    Hard: Colors.light.danger,
+    Beginner: Colors.light.success,
+    Intermediate: Colors.light.warning,
+    Advanced: Colors.light.danger,
   };
 
   return (

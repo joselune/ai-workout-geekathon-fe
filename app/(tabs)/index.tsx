@@ -28,6 +28,7 @@ export default function TabOneScreen() {
   const [daysAvailable, setDaysAvailable] = useState<string[]>([]);
   const [availableWorkoutTime, setAvailableWorkoutTime] = useState("");
   const [injuries, setInjuries] = useState("");
+  const [muscleGroup, setMuscleGroup] = useState("upper_body");
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const handleWorkout = async () => {
@@ -40,6 +41,7 @@ export default function TabOneScreen() {
       daysAvailable,
       availableWorkoutTime,
       injuries,
+      muscleGroup,
     };
     navigation.navigate("two", { workoutData });
   };
@@ -71,15 +73,15 @@ export default function TabOneScreen() {
             onChangeText={setWeight}
           />
 
-          <Text style={styles.label}>Experience level</Text>
+          <Text style={styles.label}>Muscle Group</Text>
           <OptionSelector
             options={[
-              { label: "Beginner", value: "Beginner" },
-              { label: "Intermediate", value: "Intermediate" },
-              { label: "Advanced", value: "Advanced" },
+              { label: "Upper Body", value: "upper_body" },
+              { label: "Lower Body", value: "lower_body" },
+              { label: "Full body", value: "full_body" },
             ]}
-            selectedValue={experienceLevel}
-            onSelect={(value) => setExperienceLevel(value as string)}
+            selectedValue={muscleGroup}
+            onSelect={(value) => setMuscleGroup(value as string)}
           />
 
           <Text style={styles.label}>Experience level</Text>

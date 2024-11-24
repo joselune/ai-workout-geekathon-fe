@@ -6,6 +6,7 @@ export type WorkoutData = {
     fitnessGoal: string;
     daysAvailable: string[];
     availableWorkoutTime: string;
+    muscleGroup: string,
     injuries?: string;
 };
 

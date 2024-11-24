@@ -68,7 +68,6 @@ export default function TabTwoScreen() {
         setError(false);
         setLoading(true);
         const response = await generateExercises(workoutData);
-        console.log(response);
         setWorkOuts(response);
       } catch (err) {
         console.log(err);

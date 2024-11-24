@@ -13,7 +13,9 @@ export async function generateExercises(data: WorkoutData): Promise<WorkoutPlan[
     // }).join('&');
     // const dataUrl = `${mockUrl}?${queryParams}`;
 
-    const dataUrl = `${mockUrl}?fitness_level=Beginner&muscle_group=lower_body`
+    console.log(JSON.stringify(data))
+
+    const dataUrl = `${mockUrl}?fitness_level=${data.experienceLevel}&muscle_group=${data.muscleGroup}`
 
     try {
         const response = await fetch(dataUrl, {
