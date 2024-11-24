@@ -109,7 +109,7 @@ export default function TabTwoScreen() {
   }
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity
           onPress={() => navigation.goBack()}
@@ -126,10 +126,7 @@ export default function TabTwoScreen() {
           <Text style={styles.headerTitle}>Workouts</Text>
         </View>
       </View>
-      {/* <MetadataWorkout workoutData={workoutData} /> */}
-      <ScrollView
-        contentContainerStyle={{ overflow: "scroll", paddingBottom: 150 }}
-      >
+      <ScrollView contentContainerStyle={{ paddingBottom: 150 }}>
         {workouts?.map((workout, index) => (
           <WorkoutPlan key={index} workoutPlan={workout} />
         ))}
@@ -139,6 +136,11 @@ export default function TabTwoScreen() {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: Colors.light.background,
+  },
   header: {
     flexDirection: "row",
     alignItems: "center",

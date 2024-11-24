@@ -78,7 +78,7 @@ export default function TabOneScreen() {
             options={[
               { label: "Upper Body", value: "upper_body" },
               { label: "Lower Body", value: "lower_body" },
-              { label: "Full body", value: "full_body" },
+              { label: "Full Body", value: "full_body" },
             ]}
             selectedValue={muscleGroup}
             onSelect={(value) => setMuscleGroup(value as string)}
